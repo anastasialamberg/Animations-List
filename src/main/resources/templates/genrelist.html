@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre List</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Genre List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Genre Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="genre : ${genres}">
+                <td th:text="${genre.genre_id}"></td>
+                <td th:text="${genre.genreName}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/addgenre}">Add Genre</a>
+</body>
+
+</html>

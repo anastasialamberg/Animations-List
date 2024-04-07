@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio List</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <h1>Studio List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Studio Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="studio : ${studios}">
+                <td th:text="${studio.studio_id}"></td>
+                <td th:text="${studio.studioName}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/add}">Add Studio</a>
+</body>
+
+</html>
