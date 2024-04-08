@@ -12,7 +12,7 @@
     <h1>Add Animation</h1>
     <form action="@{/animations}" th:action="@{/save}" th:object="${newAnimation}" method="post">
 
-        <table>
+        <table class="table table-striped">
             <tr>
                 <td>Title:</td>
                 <td><input type="text" th:field="*{title}" th:value="${newAnimation.title}" /></td>

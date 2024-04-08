@@ -19,6 +19,8 @@
                 <th>Director</th>
                 <th>Studio</th>
                 <th>Genre</th>
+                <th>Like</th>
+                <th>Total likes</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +30,12 @@
                 <td th:text="${animation.director}"></td>
                 <td th:text="${animation.studio?.studioName}"></td>
                 <td th:text="${animation.genre?.genreName}"></td>
+                <td>
+                    <form th:action="@{/vote/{animation_id}(animation_id=${animation.animation_id})}" method="post">
+                        <button type="submit">Like movie</button>
+                    </form>
+                </td>
+                <td th:text="${animation.votes}"></td>
 
             </tr>
 

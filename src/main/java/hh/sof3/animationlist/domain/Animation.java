@@ -22,6 +22,7 @@ public class Animation {
     private String title;
     private Integer releaseYear;
     private String director;
+    private int votes;
 
     @ManyToOne
     @JsonIgnoreProperties("animations")
@@ -96,17 +97,24 @@ public class Animation {
         this.genre = genre;
     }
 
-    @Override
-    public String toString() {
-        if (this.studio != null && this.genre != null)
-            return "Animation [animation_id=" + animation_id + ", title=" + title + ", releaseYear=" + releaseYear
-                    + ", director=" + director + ", studio=" + this.getStudio() + ", genre=" + this.getGenre() + "]";
-        else if (this.studio != null)
-            return "Animation [animation_id=" + animation_id + ", title=" + title + ", releaseYear=" + releaseYear
-                    + ", director=" + director + ", studio=" + this.getStudio() + "]";
-        else
-            return "Animation [animation_id=" + animation_id + ", title=" + title + ", releaseYear=" + releaseYear
-                    + ", director=" + director + "]";
+    public int getVotes() {
+        return votes;
     }
 
+    public void setVotes(int votes) {
+        this.votes = votes;
+    }
+
+    @Override
+    public String toString() {
+        return "Animation{" +
+                "animation_id=" + animation_id +
+                ", title='" + title + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", director='" + director + '\'' +
+                ", votes=" + votes +
+                ", studio=" + (studio != null ? getStudio() : "null") +
+                ", genre=" + (genre != null ? getGenre() : "null") +
+                '}';
+    }
 }
