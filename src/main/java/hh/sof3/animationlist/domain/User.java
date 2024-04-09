@@ -78,7 +78,7 @@ public class User {
     }
 
     public User get(int i) {
-        // TODO Auto-generated method stub
+
         throw new UnsupportedOperationException("Unimplemented method 'get'");
     }
 

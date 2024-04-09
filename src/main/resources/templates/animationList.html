@@ -51,6 +51,11 @@
                 </td>
                 <td th:text="${animation.votes}"></td>
 
+                <td>
+                    <a th:href="@{delete/{animation_id}(animation_id=${animation.animation_id})}"
+                        sec:authorize="hasAuthority('ADMIN')">Delete</a>
+                </td>
+
             </tr>
 
         </tbody>

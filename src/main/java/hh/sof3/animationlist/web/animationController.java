@@ -3,6 +3,7 @@ package hh.sof3.animationlist.web;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import hh.sof3.animationlist.domain.AnimationRepository;
 import hh.sof3.animationlist.domain.GenreRepository;
 import hh.sof3.animationlist.domain.StudioRepository;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class animationController {
@@ -61,6 +63,14 @@ public class animationController {
             animation.setVotes(animation.getVotes() + 1);
             animationRepository.save(animation);
         }
+        return "redirect:/animations";
+    }
+
+    // delete animation
+    @GetMapping("/delete/{animation_id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public String deleteAnimation(@PathVariable("animation_id") Long animation_id, Model model) {
+        animationRepository.deleteById(animation_id);
         return "redirect:/animations";
     }
 
