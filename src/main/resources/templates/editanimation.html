@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation List</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-4">
+            <h1>Edit Animation</h1>
+        </div>
+
+        <form th:action="@{/update/{animation_id}(animation_id=${animation.animation_id})}" th:object="${animation}"
+            method="post">
+            <input type="hidden" name="animation_id" th:value="${animation.animation_id}" />
+
+
+
+
+            <table class="table table-striped">
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" th:field="*{title}" th:value="${animation.title}" /></td>
+                </tr>
+                <tr>
+                    <td>Release Year:</td>
+                    <td><input type="text" th:field="*{releaseYear}" th:value="${animation.releaseYear}" /></td>
+                </tr>
+                <tr>
+                    <td>Director:</td>
+                    <td><input type="text" th:field="*{director}" th:value="${animation.director}" />
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Studio:</td>
+                    <td>
+                        <select id="studioList" th:field="*{studio}" class="form-control">
+                            <option th:each="stu : ${studios}" th:value="${stu.studio_id}" th:text="${stu.studioName}">
+                            </option>
+                        </select>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Genre:</td>
+                    <td>
+                        <select id="genreList" th:field="*{genre}" class="form-control">
+                            <option th:each="gen : ${genres}" th:value="${gen.genre_id}" th:text="${gen.genreName}">
+                            </option>
+                        </select>
+
+                    </td>
+
+                </tr>
+            </table>
+
+
+            <div class="text-start">
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </form>
+</body>
+
+</html>

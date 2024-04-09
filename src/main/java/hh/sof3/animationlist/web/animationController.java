@@ -16,6 +16,7 @@ import hh.sof3.animationlist.domain.GenreRepository;
 import hh.sof3.animationlist.domain.StudioRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class animationController {
@@ -72,6 +73,32 @@ public class animationController {
     public String deleteAnimation(@PathVariable("animation_id") Long animation_id, Model model) {
         animationRepository.deleteById(animation_id);
         return "redirect:/animations";
+    }
+
+    // Edit animation
+    @GetMapping("/edit/{animation_id}")
+    public String editAnimation(@PathVariable("animation_id") Long animation_id, Model model) {
+        Optional<Animation> optionalAnimation = animationRepository.findById(animation_id);
+
+        if (optionalAnimation.isPresent()) {
+            Animation animation = optionalAnimation.get();
+            model.addAttribute("animation", animation);
+            model.addAttribute("studios", studioRepository.findAll());
+            model.addAttribute("genres", genreRepository.findAll());
+            return "editanimation";
+        } else {
+            return "redirect:/animations";
+        }
+
+    }
+
+    // Update animation
+    @PostMapping("/update/{animation_id}")
+    public String updateAnimation(@PathVariable("animation_id") Long animation_id,
+            @ModelAttribute("animation") Animation updateAnimation) {
+        animationRepository.save(updateAnimation);
+        return "redirect:/animations";
+
     }
 
 }
