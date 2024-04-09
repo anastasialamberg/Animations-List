@@ -54,7 +54,6 @@ public class animationController {
     }
 
     // Votes
-
     @PostMapping("/vote/{animation_id}")
     public String voteAnimation(@PathVariable Long animation_id) {
         Optional<Animation> optionalAnimation = animationRepository.findById(animation_id);
