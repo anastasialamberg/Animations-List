@@ -9,7 +9,21 @@
 </head>
 
 <body>
-    <h1>Animation List</h1>
+    <div class="row align-items-center mb-4">
+        <div class="col-md-4">
+            <h1>Animation List</h1>
+        </div>
+
+
+        <div class="col-md-4">
+            <h3>Welcome <span sec:authentication="name"></span></h3>
+        </div>
+        <div class="col-md-4">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn btn-sm btn-danger" />
+            </form>
+        </div>
+    </div>
 
     <table class="table table-striped">
         <thead>

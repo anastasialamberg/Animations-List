@@ -14,7 +14,6 @@ import hh.sof3.animationlist.domain.AnimationRepository;
 import hh.sof3.animationlist.domain.GenreRepository;
 import hh.sof3.animationlist.domain.StudioRepository;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class animationController {

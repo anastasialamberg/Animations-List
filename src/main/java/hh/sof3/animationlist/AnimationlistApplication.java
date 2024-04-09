@@ -13,6 +13,8 @@ import hh.sof3.animationlist.domain.Genre;
 import hh.sof3.animationlist.domain.GenreRepository;
 import hh.sof3.animationlist.domain.Studio;
 import hh.sof3.animationlist.domain.StudioRepository;
+import hh.sof3.animationlist.domain.User;
+import hh.sof3.animationlist.domain.UserRepository;
 
 @SpringBootApplication
 public class AnimationlistApplication {
@@ -25,7 +27,7 @@ public class AnimationlistApplication {
 
 	@Bean
 	public CommandLineRunner demo(AnimationRepository animationRepository, StudioRepository studioRepository,
-			GenreRepository genreRepository) {
+			GenreRepository genreRepository, UserRepository userRepository) {
 		return (args) -> {
 
 			Studio studio1 = new Studio(null, "Disney and Pixar");
@@ -62,6 +64,14 @@ public class AnimationlistApplication {
 			for (Genre genre : genreRepository.findAll()) {
 				logger.info(genre.toString());
 			}
+
+			User user1 = new User("user", "$2a$10$GxQjyx4ozkBsQetnLpQkTuqEXmWguGWnRHDsN94oq96lu2bkjaY2m",
+					"user@gmail.com", "USER");
+			User user2 = new User("admin", "$2a$10$Yjqt4eSXaMi0inkzwP6qAO2DvGymViIaB/jDWlca7XtF3nC6/KN7C",
+					"admin@gmail.com", "ADMIN");
+
+			userRepository.save(user1);
+			userRepository.save(user2);
 
 		};
 
