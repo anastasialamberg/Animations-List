@@ -10,6 +10,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "animation")
@@ -19,8 +23,13 @@ public class Animation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "animation_id")
     private Long animation_id;
+
+    @NotBlank
+    @Size(min = 2, max = 30)
     private String title;
+
     private Integer releaseYear;
+
     private String director;
     private int votes;
 
