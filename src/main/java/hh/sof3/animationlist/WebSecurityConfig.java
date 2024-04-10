@@ -26,7 +26,8 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(antMatcher("/css/**")).permitAll()
-
+                        .requestMatchers(antMatcher("/signup")).permitAll()
+                        .requestMatchers(antMatcher("/saveuser")).permitAll()
                         .requestMatchers(toH2Console()).permitAll()
                         .anyRequest().authenticated())
 
@@ -36,6 +37,7 @@ public class WebSecurityConfig {
                         .frameOptions(frameoptions -> frameoptions
                                 .disable()))
                 .formLogin(formlogin -> formlogin
+                        .loginPage("/login")
                         .defaultSuccessUrl("/animations", true)
                         .permitAll())
                 .logout(logout -> logout

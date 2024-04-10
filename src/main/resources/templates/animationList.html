@@ -65,7 +65,7 @@
 
     </table>
     <div class="text-start">
-        <a th:href="@{/newanimation}" class="btn btn-success">Add animation</a>
+        <a th:href="@{/newanimation}" class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Add animation</a>
     </div>
 </body>
 

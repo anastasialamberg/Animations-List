@@ -1,5 +1,6 @@
 package hh.sof3.animationlist.web;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import hh.sof3.animationlist.domain.Animation;
 import hh.sof3.animationlist.domain.AnimationRepository;
 import hh.sof3.animationlist.domain.GenreRepository;
 import hh.sof3.animationlist.domain.StudioRepository;
+import hh.sof3.animationlist.domain.UserRepository;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +31,8 @@ public class animationController {
     private StudioRepository studioRepository;
     @Autowired
     private GenreRepository genreRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     // Find all animations
     @GetMapping("/animations")
