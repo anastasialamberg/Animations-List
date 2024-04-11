@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +17,9 @@ import hh.sof3.animationlist.domain.AnimationRepository;
 import hh.sof3.animationlist.domain.GenreRepository;
 import hh.sof3.animationlist.domain.StudioRepository;
 import hh.sof3.animationlist.domain.UserRepository;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class animationController {
@@ -54,8 +54,11 @@ public class animationController {
 
     // save new animation
     @PostMapping("/save")
-    public String saveAnimation(@ModelAttribute("newAnimation") Animation newAnimation) {
-
+    public String saveAnimation(@Valid @ModelAttribute("newAnimation") Animation newAnimation,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "addanimation";
+        }
         animationRepository.save(newAnimation);
         return "redirect:/animations";
     }

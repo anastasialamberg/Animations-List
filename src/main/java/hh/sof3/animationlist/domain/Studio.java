@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Studio {
@@ -19,6 +21,9 @@ public class Studio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studio_id")
     private Long studio_id;
+
+    @NotBlank(message = "Studio name is required")
+    @Size(min = 2, max = 30, message = "Studio name must be between 2 and 30 characters")
     private String studioName;
 
     @OneToMany(mappedBy = "studio", cascade = CascadeType.ALL)

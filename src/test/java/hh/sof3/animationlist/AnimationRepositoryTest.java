@@ -78,8 +78,7 @@ public class AnimationRepositoryTest {
 
     @Test
     void testUserRepository() {
-        User user = new User("maijap", "$2a$10$EFPDcnDkAlTQdSQbBCwa9uWo3xdRh4SaAeKuY7g9mTPIBhliT7SJ6",
-                "maijap@gmail.com", "USER");
+        User user = new User("maijap", "$2a$10$EFPDcnDkAlTQdSQbBCwa9uWo3xdRh4SaAeKuY7g9mTPIBhliT7SJ6", "USER");
         userRepository.save(user);
 
         User foundUser = userRepository.findByUsername("maijap");

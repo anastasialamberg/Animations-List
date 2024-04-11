@@ -65,10 +65,8 @@ public class AnimationlistApplication {
 				logger.info(genre.toString());
 			}
 
-			User user1 = new User("user", "$2a$10$GxQjyx4ozkBsQetnLpQkTuqEXmWguGWnRHDsN94oq96lu2bkjaY2m",
-					"user@gmail.com", "USER");
-			User user2 = new User("admin", "$2a$10$Yjqt4eSXaMi0inkzwP6qAO2DvGymViIaB/jDWlca7XtF3nC6/KN7C",
-					"admin@gmail.com", "ADMIN");
+			User user1 = new User("user", "$2a$10$GxQjyx4ozkBsQetnLpQkTuqEXmWguGWnRHDsN94oq96lu2bkjaY2m", "USER");
+			User user2 = new User("admin", "$2a$10$Yjqt4eSXaMi0inkzwP6qAO2DvGymViIaB/jDWlca7XtF3nC6/KN7C", "ADMIN");
 
 			userRepository.save(user1);
 			userRepository.save(user2);

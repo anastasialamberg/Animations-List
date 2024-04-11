@@ -10,9 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
-
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -24,10 +23,11 @@ public class Animation {
     @Column(name = "animation_id")
     private Long animation_id;
 
-    @NotBlank
-    @Size(min = 2, max = 30)
+    @NotBlank(message = "Animation title is required")
+    @Size(min = 2, max = 30, message = "Animation title must be between 2 and 30 characters")
     private String title;
 
+    @NotNull(message = "Release year is required")
     private Integer releaseYear;
 
     private String director;

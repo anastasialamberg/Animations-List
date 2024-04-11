@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.sof3.animationlist.domain.Genre;
 import hh.sof3.animationlist.domain.GenreRepository;
-import hh.sof3.animationlist.domain.Studio;
 
 @Controller
 public class genreController {
@@ -18,6 +17,7 @@ public class genreController {
     @Autowired
     private GenreRepository genreRepository;
 
+    // find all genres
     @GetMapping("/genre")
     public String showGenreList(Model model) {
         List<Genre> genres = (List<Genre>) genreRepository.findAll();
@@ -25,12 +25,14 @@ public class genreController {
         return "genrelist";
     }
 
+    // add new genre
     @GetMapping("/addgenre")
     public String showAddGenreForm(Model model) {
         model.addAttribute("genre", new Genre());
         return "addgenre";
     }
 
+    // save new genre
     @PostMapping("/savegenre")
     public String saveGenre(Genre genre) {
         genreRepository.save(genre);

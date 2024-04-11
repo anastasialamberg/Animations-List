@@ -13,9 +13,7 @@
         <h6 class="text-center">Please sign in or sign up to our list</h6>
         <div class="row justify-content-center align-items-center" style="height: 30vh;">
             <div class="col-md-6">
-                <div class="alert alert-success" th:if="${param.success}">
-                    Registration successful! Please sign in.
-                </div>
+
                 <div class="alert alert-danger" th:if="${param.error}">
                     Invalid username and password.
                 </div>
