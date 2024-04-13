@@ -6,26 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Genre List</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: #fff;
+
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #dee2e6;
+            padding: 0.75rem;
+
+        }
+
+        .table td:first-child,
+        .table th:first-child {
+            border-left: 0;
+
+        }
+
+        .table td:last-child,
+        .table th:last-child {
+            border-right: 0;
+
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+
+        }
+
+        a:hover {
+            color: #0056b3;
+
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Genre List</h1>
+    <div class="container">
+        <h1>Genre List</h1>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Genre Id</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="genre : ${genres}">
-                <td th:text="${genre.genre_id}"></td>
-                <td th:text="${genre.genreName}"></td>
-            </tr>
-        </tbody>
-    </table>
-    <a th:href="@{/addgenre}">Add Genre</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Genre Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="genre : ${genres}">
+                    <td th:text="${genre.genre_id}"></td>
+                    <td th:text="${genre.genreName}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/addgenre}">Add Genre</a>
+    </div>
 </body>
 
 </html>
