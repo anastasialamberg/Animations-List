@@ -33,14 +33,32 @@ public class AnimationlistApplication {
 			Studio studio1 = new Studio(null, "Disney and Pixar");
 			studioRepository.save(studio1);
 
-			Studio studio2 = new Studio(null, "Disney");
+			Studio studio2 = new Studio(null, "The Walt Disney Company");
 			studioRepository.save(studio2);
+
+			Studio studio3 = new Studio(null, "DreamWorks Animation");
+			studioRepository.save(studio3);
+
+			Studio studio4 = new Studio(null, "Pixar");
+			studioRepository.save(studio4);
+
+			Studio studio5 = new Studio(null, "Illumination");
+			studioRepository.save(studio5);
 
 			Genre genre1 = new Genre(null, "Adventure");
 			genreRepository.save(genre1);
 
 			Genre genre2 = new Genre(null, "Family");
 			genreRepository.save(genre2);
+
+			Genre genre4 = new Genre(null, "Comedy");
+			genreRepository.save(genre4);
+
+			Genre genre5 = new Genre(null, "Sci-fi");
+			genreRepository.save(genre5);
+
+			Genre genre6 = new Genre(null, "Fantasy");
+			genreRepository.save(genre6);
 
 			Animation animation1 = new Animation(null, "Soul", 2020, "Pete Docter");
 			animation1.setStudio(studio1);
@@ -51,6 +69,11 @@ public class AnimationlistApplication {
 			animation2.setStudio(studio2);
 			animation2.setGenre(genre2);
 			animationRepository.save(animation2);
+
+			Animation animation3 = new Animation(null, "Madagascar", 2005, "Tom McGrath, Eric Darnell");
+			animation3.setStudio(studio3);
+			animation3.setGenre(genre1);
+			animationRepository.save(animation3);
 
 			logger.info("Fetch all the animations");
 			for (Animation animation : animationRepository.findAll()) {

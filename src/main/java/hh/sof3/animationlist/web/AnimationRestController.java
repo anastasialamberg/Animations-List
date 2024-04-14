@@ -26,16 +26,19 @@ public class AnimationRestController {
     @Autowired
     private AnimationRepository animationRepository;
 
+    // get all rest animations
     @GetMapping
     public @ResponseBody List<Animation> animationsListRest() {
         return (List<Animation>) animationRepository.findAll();
     }
 
+    // find by Id
     @GetMapping("/{animation_id}")
     public @ResponseBody Optional<Animation> findAnimationRest(@PathVariable("animation_id") Long animation_id) {
         return animationRepository.findById(animation_id);
     }
 
+    // save new animation
     @PostMapping
     public @ResponseBody Animation saveAnimationRest(@RequestBody Animation animation) {
         return animationRepository.save(animation);
