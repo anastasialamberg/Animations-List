@@ -1,7 +1,5 @@
 package hh.sof3.animationlist;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
